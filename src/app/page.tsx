@@ -1,7 +1,10 @@
+import React from 'react'
+import TicketRequestForm from '@/components/TicketRequestForm/TicketRequestForm'
+
 export default function Home() {
   return (
     <div>
-      list of issues
+      <TicketRequestForm />
     </div>
   )
 }
