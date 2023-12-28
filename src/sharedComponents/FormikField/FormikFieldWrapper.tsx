@@ -9,7 +9,7 @@ interface IFormikFieldWrapperProps {
 }
 
 const FormikFieldWrapper: FC<IFormikFieldWrapperProps> = ({
-  children, fieldName, required, label,
+  children, fieldName, required = false, label,
 }) => {
   return (
     <Grid
@@ -34,10 +34,6 @@ const FormikFieldWrapper: FC<IFormikFieldWrapperProps> = ({
       </Grid>
     </Grid>
   );
-};
-
-FormikFieldWrapper.defaultProps = {
-  required: false,
 };
 
 export default FormikFieldWrapper;

@@ -22,11 +22,11 @@ interface IFormikTextFieldProps {
 const FormikTextField: FC<IFormikTextFieldProps> = ({
   label,
   fieldName,
-  variant,
-  formatValue,
-  disabled,
-  required,
-  fullWidth,
+  variant = "outlined",
+  formatValue = null,
+  disabled = false,
+  required = false,
+  fullWidth = false,
 }) => {
   const [field, error] = useField(fieldName);
 
@@ -56,12 +56,6 @@ const FormikTextField: FC<IFormikTextFieldProps> = ({
   );
 };
 
-FormikTextField.defaultProps = {
-  formatValue: null,
-  variant: 'outlined',
-  disabled: false,
-  required: false,
-  fullWidth: false,
-};
+
 
 export default FormikTextField;

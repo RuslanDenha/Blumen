@@ -12,7 +12,6 @@ const TicketRequestFormFields = () => {
   return (
     <Paper
       className="p-6 mt-6"
-      elevation={3}
       variant="outlined"
     >
       <Grid

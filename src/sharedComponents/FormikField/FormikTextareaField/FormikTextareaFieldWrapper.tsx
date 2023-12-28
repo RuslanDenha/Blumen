@@ -11,7 +11,7 @@ interface IFormikTextareaFieldWrapperProps {
 const FormikTextareaFieldWrapper: React.FC<
   IFormikTextareaFieldWrapperProps
 > = ({
-  fieldName, label, required, children,
+  fieldName, label = '', required, children,
 }) => {
   if (!label) {
     return children as JSX.Element;
@@ -53,10 +53,6 @@ const FormikTextareaFieldWrapper: React.FC<
       </Grid>
     </Grid>
   );
-};
-
-FormikTextareaFieldWrapper.defaultProps = {
-  label: '',
 };
 
 export default FormikTextareaFieldWrapper;

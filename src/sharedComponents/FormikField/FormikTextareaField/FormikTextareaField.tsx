@@ -13,7 +13,10 @@ interface IFormikTextareaFieldProps {
 const FormikTextareaField: React.FC<
   IFormikTextareaFieldProps
 > = ({
-  fieldName, label, required, disabled,
+  fieldName,
+  label = '',
+  required = false,
+  disabled = false,
 }) => {
   const [field, error] = useField(fieldName);
 
@@ -38,12 +41,6 @@ const FormikTextareaField: React.FC<
       />
     </FormikTextareaFieldWrapper>
   );
-};
-
-FormikTextareaField.defaultProps = {
-  label: '',
-  required: false,
-  disabled: false,
 };
 
 export default FormikTextareaField;
