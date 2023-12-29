@@ -1,10 +1,10 @@
 import { connectMongoDB } from '@/libs/mongodb';
 import { NextResponse } from 'next/server';
 import Ticket from '@/models/ticket';
-import { ITicket } from '@/tsModels/ticket.models';
+import { ITicketDraft } from '@/tsModels/ticket.models';
 
 interface IRequest {
-  json: () => Promise<ITicket>;
+  json: () => Promise<ITicketDraft>;
 }
 
 export async function POST(request: IRequest)  {
@@ -17,4 +17,10 @@ export async function POST(request: IRequest)  {
     { message: 'Ticket created' },
     { status: 201 },
   )
+}
+
+export async function GET() {
+  await connectMongoDB();
+  const tickets = await Ticket.find();
+  return NextResponse.json({ tickets });
 }

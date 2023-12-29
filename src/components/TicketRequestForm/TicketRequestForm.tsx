@@ -1,14 +1,14 @@
 "use client";
 
 import { Formik, Form, } from 'formik';
-import { ITicket } from '@/tsModels/ticket.models';
-import {postTicket} from '@/components/TicketRequestForm/request';
+import { ITicketDraft } from '@/tsModels/ticket.models';
+import { postTicket } from '@/components/TicketRequestForm/request';
 import TicketRequestFormSchema from '@/components/TicketRequestForm/TicketRequestFormSchema';
 import TicketRequestFormFields from '@/components/TicketRequestForm/TicketRequestFormFields';
 
 
 const TicketRequestForm = () => {
-  const onSubmit = async (values: ITicket) => {
+  const onSubmit = async (values: ITicketDraft) => {
     try {
       await postTicket(values);
     } catch (error) {

@@ -4,7 +4,15 @@ export enum TICKET_STATUS {
   RESOLVED = 'RESOLVED',
 }
 
+export interface ITicketDraft {
+  name: string;
+  email: string;
+  description: string;
+  status: TICKET_STATUS;
+}
+
 export interface ITicket {
+  _id: string;
   name: string;
   email: string;
   description: string;
