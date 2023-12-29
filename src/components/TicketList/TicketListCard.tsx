@@ -6,19 +6,31 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import { ITicket } from '@/tsModels/ticket.models';
+import { deleteTicket } from '@/components/TicketList/request';
 
 interface ITicketListCardProps {
   ticket: ITicket;
   isAdmin: boolean;
+  loadTickets: () => void;
 }
 
-const TicketListCard = ({ ticket, isAdmin }: ITicketListCardProps) => {
+const TicketListCard = ({ ticket, isAdmin, loadTickets }: ITicketListCardProps) => {
+  const onDelete = async () => {
+    try {
+      await deleteTicket(ticket._id);
+
+      await loadTickets();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const action = isAdmin ? (
     <>
       <IconButton>
         <EditIcon />
       </IconButton>
-      <IconButton>
+      <IconButton onClick={onDelete}>
         <CloseIcon />
       </IconButton>
     </>

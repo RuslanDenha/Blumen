@@ -1,24 +1,19 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Paper from '@mui/material/Paper';
-import { getTicketList } from '@/components/TicketList/request';
 import { ITicket } from '@/tsModels/ticket.models';
 import TicketListCard from '@/components/TicketList/TicketListCard';
 
 interface ITicketListProps {
-  isAdmin: boolean
+  isAdmin?: boolean
+  ticketList: ITicket[]
+  loadTickets: () => void
 }
 
-const TicketList = ({ isAdmin = false }: ITicketListProps) => {
-  const [ticketList, setTicketList] = useState<ITicket[]>([]);
-
-
+const TicketList = ({ isAdmin = false, ticketList, loadTickets }: ITicketListProps) => {
   useEffect(() => {
-    getTicketList()
-      .then((tickets = []) => {
-        setTicketList(tickets);
-      })
+    loadTickets();
   }, [])
 
   return (
@@ -31,6 +26,7 @@ const TicketList = ({ isAdmin = false }: ITicketListProps) => {
           key={ticket._id}
           ticket={ticket}
           isAdmin={isAdmin}
+          loadTickets={loadTickets}
         />
       ))}
     </Paper>

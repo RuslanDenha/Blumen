@@ -7,10 +7,15 @@ import TicketRequestFormSchema from '@/components/TicketRequestForm/TicketReques
 import TicketRequestFormFields from '@/components/TicketRequestForm/TicketRequestFormFields';
 
 
-const TicketRequestForm = () => {
+interface ITicketRequestFormProps {
+  loadTickets: () => void;
+}
+
+const TicketRequestForm = ({ loadTickets }: ITicketRequestFormProps) => {
   const onSubmit = async (values: ITicketDraft) => {
     try {
       await postTicket(values);
+      await loadTickets();
     } catch (error) {
       console.log(error);
     }

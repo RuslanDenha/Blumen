@@ -16,3 +16,15 @@ export const getTicketList = async (): Promise< ITicket[] | undefined> => {
     console.log(error);
   }
 }
+
+export const deleteTicket = async (id: string) => {
+  try {
+    const res = await axios.delete(`/api/tickets?id=${id}`);
+
+    if (res.status !== 200) {
+      throw new Error("Failed to delete a ticket");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
