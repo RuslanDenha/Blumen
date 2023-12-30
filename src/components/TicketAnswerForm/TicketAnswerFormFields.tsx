@@ -8,7 +8,7 @@ import FormikSelectField from '@/sharedComponents/FormikField/FormikSelectField'
 import { ticketStatusOptions } from '@/tsModels/ticket.models';
 
 const TicketAnswerFormFields = () => {
-  const { submitForm } = useFormikContext();
+  const { submitForm, isSubmitting } = useFormikContext();
 
   return (
     <Paper
@@ -62,6 +62,7 @@ const TicketAnswerFormFields = () => {
             type="submit"
             variant="outlined"
             color="primary"
+            disabled={isSubmitting}
           >
             Respond to the request
           </Button>

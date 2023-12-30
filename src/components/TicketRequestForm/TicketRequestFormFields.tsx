@@ -7,7 +7,7 @@ import FormikTextField from '@/sharedComponents/FormikField/FormikTextField';
 import FormikTextareaField from '@/sharedComponents/FormikField/FormikTextareaField';
 
 const TicketRequestFormFields = () => {
-  const { submitForm } = useFormikContext();
+  const { submitForm, isSubmitting } = useFormikContext();
 
   return (
     <Paper
@@ -46,6 +46,7 @@ const TicketRequestFormFields = () => {
             type="submit"
             variant="outlined"
             color="primary"
+            disabled={isSubmitting}
           >
             Submit ticket request
           </Button>
