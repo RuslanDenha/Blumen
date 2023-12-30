@@ -1,9 +1,9 @@
 import { connectMongoDB } from '@/libs/mongodb';
 import { NextResponse } from 'next/server';
 import Ticket from '@/models/ticket';
-import { IRequest } from '@/tsModels/route.models';
+import type { NextRequest } from 'next/server'
 
-export async function POST(request: IRequest)  {
+export async function POST(request: NextRequest)  {
   const { name, description, email, status } = await request.json();
 
   await connectMongoDB();
@@ -21,7 +21,7 @@ export async function GET() {
   return NextResponse.json({ tickets });
 }
 
-export async function DELETE(request: IRequest) {
+export async function DELETE(request: NextRequest) {
   const id = request.nextUrl.searchParams.get("id");
   await connectMongoDB();
   await Ticket.findByIdAndDelete(id);
