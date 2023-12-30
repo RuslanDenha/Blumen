@@ -18,7 +18,7 @@ export async function PUT(request: IRequest, { params }: IParams) {
   return NextResponse.json({ message: "Ticket updated" }, { status: 200 });
 }
 
-export async function GET(request: IRequest, { params }: IParams) {
+export async function GET(_: unknown, { params }: IParams) {
   const { id } = params;
   await connectMongoDB();
   const ticket = await Ticket.findOne({ _id: id });
