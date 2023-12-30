@@ -21,7 +21,7 @@ const TicketList = ({ isAdmin = false, ticketList, loadTickets }: ITicketListPro
       className="p-6 mt-6 bg-gray-50"
       variant="outlined"
     >
-      {ticketList.map((ticket) => (
+      {[...ticketList].reverse().map((ticket) => (
         <TicketListCard
           key={ticket._id}
           ticket={ticket}

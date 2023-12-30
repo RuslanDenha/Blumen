@@ -6,6 +6,7 @@ const ticketSchema = new Schema(
     email: String,
     description: String,
     status: String,
+    answer: String,
   },
   {
     timestamps: true,

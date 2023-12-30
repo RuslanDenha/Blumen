@@ -1,16 +1,7 @@
 import { connectMongoDB } from '@/libs/mongodb';
 import { NextResponse } from 'next/server';
 import Ticket from '@/models/ticket';
-import { ITicketDraft } from '@/tsModels/ticket.models';
-
-interface IRequest {
-  json: () => Promise<ITicketDraft>;
-  nextUrl: {
-    searchParams: {
-      get: (param: string) => string;
-    }
-  }
-}
+import { IRequest } from '@/tsModels/route.models';
 
 export async function POST(request: IRequest)  {
   const { name, description, email, status } = await request.json();
