@@ -31,6 +31,16 @@ const TicketAnswerForm = () => {
 
     try {
       await editTicketById(_id, ticket);
+
+      // email to the user
+      console.log(`dear, ${name}`);
+      console.log(`the problem description you have provided is:`);
+      console.log(description)
+      console.log(`your ticket status is:`);
+      console.log(status)
+      console.log(`your ticket answer is:`);
+      console.log(answer)
+
       router.push(`/admin`)
     } catch (error) {
       console.log(error);
